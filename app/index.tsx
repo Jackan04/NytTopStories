@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 import { FlatList, Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { API_KEY } from '../assets/apiKey.js';
 import ArticleCard from './Components/ArticleCard';
 import styles from './styles';
 
 export default function Index() {
   const [articles, setArticles] = useState<any[]>([])
   const[activeCategory, setActiveCategory] = useState("most-viewed");
-  const apiKey = "jl9KtCJp9rRpr6AarHeir3jQ0J0mPA6D"
+  const apiKey = API_KEY
 
   useEffect(() => {
-      activeCategory === "most-viewed" ? getMostViewed() : getMostShared
-  },[])
+      activeCategory === "most-viewed" ? getMostViewed() : getMostShared()
+  },[activeCategory])
 
   function getMostViewed(){
         (setActiveCategory("most-viewed"))
@@ -19,7 +20,10 @@ export default function Index() {
         return fetch(`https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${apiKey}`)
           .then(response => response.json())
           .then(json => setArticles(json.results))
-          .catch(error => console.error(error))  
+          .catch(error => {
+            console.error(`Most Viewed Error: ${error.message}`)
+            alert(`Error: ${error.message}`)
+          })
     } 
 
   function getMostShared(){
@@ -28,7 +32,10 @@ export default function Index() {
         return fetch(`https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=${apiKey}`)
           .then(response => response.json())
           .then(json => setArticles(json.results))
-          .catch(error => console.error(error))  
+          .catch(error => {
+            console.error(`Most Shared Error: ${error.message}`)
+            alert(`Error: ${error.message}`)
+          })
      }
 
   return (
