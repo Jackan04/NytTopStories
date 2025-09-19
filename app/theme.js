@@ -9,7 +9,7 @@ export const COLORS = {
 };
 
 export const SIZES = {
-  padding: 16,
+  padding: 15,
   borderRadius: 10,
   
   fontExtraSmall: 8,
