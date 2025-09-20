@@ -1,50 +1,83 @@
-# Welcome to your Expo app 👋
+# NYT Top Stories �
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native mobile app built with Expo that displays the most popular articles from The New York Times using their Most Popular API.
 
-## Get started
+## Features
 
-1. Install dependencies
+- Cross-platform (iOS, Android, Web)
+- **Most Viewed** articles from the past day
+- **Most Shared** articles from the past week  
+- Article cards with images and descriptions
+- Tap to read full articles in browser
+- Real-time error handling and user feedback
 
+## Tech Stack
+
+- **React Native** with **Expo**
+- **TypeScript** 
+- **New York Times Most Popular API**
+- **Expo Router** for navigation
+- **React Native Safe Area Context**
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+- Expo CLI (optional, but recommended)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Jackan04/NytTopStories.git
+   cd NytTopStories
+   ```
+
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-2. Start the app
+3. **Set up your API key**
+   - Get a free API key from [NYT Developer Portal](https://developer.nytimes.com/)
+   - Update `assets/apiKey.js` with your API key:
+     ```javascript
+     export const API_KEY = "your-api-key-here";
+     ```
 
+4. **Start the development server**
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+### Running the App
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+After starting the development server, you can:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- **On your phone**: Scan the QR code with Expo Go app
+- **In browser**: Press `w` to open web version
+- **iOS Simulator**: Press `i` (requires Xcode)
+- **Android Emulator**: Press `a` (requires Android Studio)
 
-## Get a fresh project
+## Project Structure
 
-When you're ready, run:
+```
+app/
+├── index.tsx              # Main screen with article list
+├── Components/
+│   └── ArticleCard.jsx    # Reusable article card component
+├── styles.js              # App styling
+└── theme.js               # Color theme configuration
 
-```bash
-npm run reset-project
+assets/
+├── apiKey.js              # NYT API key configuration
+└── images/                # App icons and images
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## API Endpoints Used
 
-## Learn more
+- **Most Viewed**: `mostpopular/v2/viewed/1.json` - Top articles from past day
+- **Most Shared**: `mostpopular/v2/emailed/7.json` - Top shared articles from past week
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
